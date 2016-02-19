@@ -29,6 +29,8 @@
                         nCells[1].innerHTML = (parseInt(iPageCost * 100)/100).toFixed(2);
                         nCells[2].innerHTML = (parseInt(iPagePrice * 100)/100).toFixed(2);
                 },
+				
+				
                 tableTools: {
                     "sSwfPath": "<?php echo base_url(); ?>assets/swf/copy_csv_xls_pdf.swf",
                     "aButtons": [
