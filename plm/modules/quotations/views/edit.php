@@ -340,7 +340,7 @@
                                 
                                 <label class="col-sm-2 control-label col-lg-2" for="expected_del_time">Delivery Time</label>
                                 <div class="col-lg-4">
-                                    <input class="form-control form-control-inline input-medium default-date-picker" type="text" id="expected_del_time" placeholder="Expected Delivery Time" name="expected_del_time" value="<?php echo set_value('expected_del_time',date('d/m/Y',strtotime($quotation->expected_time))); ?>" autocomplete="off" />
+                                    <input class="form-control form-control-inline input-medium default-date-picker" type="text" id="expected_del_time" placeholder="Expected Delivery Time" name="expected_del_time" value="<?php echo set_value('expected_del_time',$quotation->expected_time); ?>" autocomplete="off" />
                                 </div>
                             </div>
                             <div class="form-group">

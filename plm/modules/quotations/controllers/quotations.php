@@ -64,16 +64,16 @@ class Quotations extends CI_Controller{
             $q_date1 = explode('/',$q_date);
 			$q_date_real = $q_date1[2].'-'.$q_date1[1].'-'.$q_date1[0];
             
-            $exp_date = explode('/',$this->input->post('expected_del_time'));
+            // $exp_date = explode('/',$this->input->post('expected_del_time'));
             // print_r($exp_date);
-            $exp_date_real = $exp_date[2].'-'.$exp_date[1].'-'.$exp_date[0];
+            // $exp_date_real = $exp_date[2].'-'.$exp_date[1].'-'.$exp_date[0];
             $dataQuotation = array(
                 'qo_no'             => $this->input->post('qo_no'),
                 'branch_id'         => $this->input->post('branch_id'),
                 'quotation_date'    => $q_date_real,
                 'customer_id'       => $this->input->post('customer_id'),
                 'validity'          => $this->input->post('validity'),
-                'expected_time'     => $exp_date_real,
+                'expected_time'     => $this->input->post('expected_del_time'),
                 'delivery_place'    => $this->input->post('delivery_place'),
                 'payment_terms'    	=> $this->input->post('payment_terms'),
                 'machine_name'    	=> $this->input->post('machine_name'),
@@ -157,9 +157,9 @@ class Quotations extends CI_Controller{
             $q_date1 = explode('/',$q_date);
 			$q_date_real = $q_date1[2].'-'.$q_date1[1].'-'.$q_date1[0];
             
-            $exp_date = explode('/',$this->input->post('expected_del_time'));
+            // $exp_date = explode('/',$this->input->post('expected_del_time'));
             // print_r($exp_date);
-            $exp_date_real = $exp_date[2].'-'.$exp_date[1].'-'.$exp_date[0];
+            // $exp_date_real = $exp_date[2].'-'.$exp_date[1].'-'.$exp_date[0];
             
             $dataQuotation = array(
                 'quotation_id'      =>  $id,
@@ -168,7 +168,7 @@ class Quotations extends CI_Controller{
                 'quotation_date'    => $q_date_real,
                 'customer_id'       => $this->input->post('customer_id'),
                 'validity'          => $this->input->post('validity'),
-                'expected_time'     => $exp_date_real,
+                'expected_time'     => $this->input->post('expected_del_time'),
 				'delivery_place'    => $this->input->post('delivery_place'),
                 'comment'           => $this->input->post('comment'),
                 'charges'           => $this->input->post('charges'),

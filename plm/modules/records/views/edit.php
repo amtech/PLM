@@ -335,9 +335,11 @@
 											<input type="text" name="report_no" class="form-control" value="<?php echo set_value('report_no',$records[0]->report_no); ?>" />
 										</td>
 										<td>
+											<input type="file" name="commission_report" id="commission_report" accept="image/*"/>
 											<a href="<?php echo base_url(); ?>assets/uploads/commissions/<?php echo $records[0]->commission_report; ?>" download><img src="<?php echo base_url(); ?>assets/uploads/commissions/<?php echo $records[0]->commission_report; ?>" alt="" width="100px" /></a>
 										</td>
 										<td>
+											<input type="file" name="delivery_note" id="delivery_note" accept="image/*"/>
 											<a href="<?php echo base_url(); ?>assets/uploads/delivery_notes/<?php echo $records[0]->delivery_note; ?>" download><img src="<?php echo base_url(); ?>assets/uploads/delivery_notes/<?php echo $records[0]->delivery_note; ?>" alt="" width="100px" /></a>
 										</td>
 									</tr>
