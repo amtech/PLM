@@ -246,7 +246,7 @@
                 $(".sub_total").each(function(){
                      total += parseFloat($(this).val()||0);
                 });
-                var main_total = parseFloat(total);
+                var main_total = parseFloat(total) + parseFloat($('#charges').val()) + parseFloat($('#freight_charges').val());
                 $("#total").val(main_total);
                 $("#grand_total").val(main_total);
             }
@@ -366,22 +366,28 @@
                                 </div>
                             </div>
 							<div class="form-group">
-								<label for="total" class="col-sm-2 control-label col-lg-2">Total</label>
+								<label for="charges" class="col-sm-2 control-label col-lg-2">Freight Charges</label>
                                 <div class="col-lg-4">
-                                    <input type="text" class="form-control" id="total" name="total" value="<?php echo $quotation->total; ?>" disabled />
+                                    <input type="text" id="freight_charges" name="freight_charges" class="form-control" value="<?php echo set_value('freight_charges',$quotation->freight); ?>" onkeyup="calculateSubTotal(this);" />
                                 </div>
 								
-								<label for="charges" class="col-sm-2 control-label col-lg-2">Other Charges</label>
+								<label for="charges" class="col-sm-2 control-label col-lg-2">Service Charges</label>
                                 <div class="col-lg-4">
                                     <input type="text" id="charges" name="charges" class="form-control" value="<?php echo set_value('charges',$quotation->charges); ?>" onkeyup="calculateSubTotal(this);" />
                                 </div>
                             </div>
 							<div class="form-group">
+								<label for="total" class="col-sm-2 control-label col-lg-2">Gross Total</label>
+                                <div class="col-lg-4">
+                                    <input type="text" class="form-control" id="total" name="total" value="<?php echo $quotation->total; ?>" disabled />
+                                </div>
+								
 								<label for="note" class="col-sm-2 control-label col-lg-2">Internal Note</label>
                                 <div class="col-lg-4">
                                     <textarea id="note" name="note" class="form-control"><?php echo set_value('note',$quotation->internal_note); ?></textarea>
                                 </div>
-								
+							</div>
+							<div class="form-group">
 								<label for="status" class="col-sm-2 control-label col-lg-2">Status</label>
                                 <div class="col-lg-4">
                                     <select class="form-control" name="status" id="status">

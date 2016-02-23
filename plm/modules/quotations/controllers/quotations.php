@@ -29,7 +29,7 @@ class Quotations extends CI_Controller{
         // echo $id;
         $quotation = $this->quotations_model->getQuotationById($id);
         $data['quotation'] = $quotation;
-        $data['quotation_items'] = $this->quotations_model->getQuoteItemsByID($quotation->id);
+        $data['quotation_items'] = $this->quotations_model->getQuoteItemsByID($id);
         // echo '<pre>';
         // print_r($data['quotation_items']);exit;
         $meta['page_title'] = 'View Quotation';
@@ -79,6 +79,7 @@ class Quotations extends CI_Controller{
                 'machine_name'    	=> $this->input->post('machine_name'),
                 'comment'           => $this->input->post('comment'),
                 'charges'           => $this->input->post('charges'),
+                'freight'           => $this->input->post('freight_charges'),
                 'total'             => $this->input->post('grand_total'),
                 'internal_note'     => $this->input->post('note'),
                 'user'              =>  USER_ID,
@@ -172,6 +173,7 @@ class Quotations extends CI_Controller{
 				'delivery_place'    => $this->input->post('delivery_place'),
                 'comment'           => $this->input->post('comment'),
                 'charges'           => $this->input->post('charges'),
+				'freight'           => $this->input->post('freight_charges'),
                 'total'             => $this->input->post('grand_total'),
                 'internal_note'     => $this->input->post('note'),
                 'status'            => $this->input->post('status'),

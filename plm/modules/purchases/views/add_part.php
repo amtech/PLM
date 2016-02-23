@@ -54,7 +54,7 @@
                                 '<input type="text" class="form-control" placeholder="Cost" id="parts_product_cost-'+count+'" name="parts_product_cost'+count+'" disabled>'+
                             '</td>'+
                             '<td>'+
-                                '<input type="text" class="form-control" placeholder="Service Tax" id="service_tax-'+count+'" name="service_tax'+count+'" onkeyup="calculateSubTotal(this);">'+
+                                '<input type="text" class="form-control" placeholder="Service Tax" id="service_tax-'+count+'" name="service_tax'+count+'" value="0" onkeyup="calculateSubTotal(this);">'+
                             '</td>'+
                             '<td>'+
                                 '<select class="form-control" id="parts_received-'+count+'" name="parts_received'+count+'">'+
@@ -150,9 +150,9 @@
                 var customs;
                 var service_tax = parseFloat($('#service_tax-'+count).val());
                 var freight = parseFloat($('#parts_product_freight-'+count).val());
-                customs = parseFloat((((cost * qty)+freight)*5)/100);
+                customs = $('#parts_product_customs-'+count).val();//parseFloat((((cost * qty)+freight)*5)/100);
                 //service_tax = parseFloat(((cost * qty) + customs)*10/100);
-                $('#parts_product_customs-'+count).val(customs);
+                // $('#parts_product_customs-'+count).val(customs);
                 //$('#service_tax-'+count).val(service_tax);
                 var part_id = $('parts_product_id-'+count).val();
                 if(part_id == "0"){

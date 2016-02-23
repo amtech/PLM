@@ -20,23 +20,23 @@
 
 						<header class="panel-heading">
 							<?php echo $page_title; ?>
-                            <!--<span class="tools pull-right">
+                            <span class="tools pull-right">
                                 <?php
-                                    // $getRevQuotes = $this->quotations_model->getRevQuotes($quotation->id);
-                                    // // echo '<pre>';
-                                    // // print_r($getRevQuotes);
-                                    // // echo '</pre>';
-                                    // if(!empty($getRevQuotes)){
-                                        // $count = 1;
-                                        // foreach($getRevQuotes as $rowRevQuotes){
-                                            // $revID = $rowRevQuotes->id;
+                                    $getRevQuotes = $this->quotations_model->getRevQuotes($quotation->id);
+                                    // echo '<pre>';
+                                    // print_r($getRevQuotes);
+                                    // echo '</pre>';
+                                    if(!empty($getRevQuotes)){
+                                        $count = 1;
+                                        foreach($getRevQuotes as $rowRevQuotes){
+                                            $revID = $rowRevQuotes->id;
                                 ?>
                                 <a class="custom-button" href="<?php echo base_url(); ?>index.php/quotations/view_revised_quotation/<?php echo $revID; ?>">v <?php echo $count++; ?></a>
                                 <?php
-                                        // }
-                                    // }
+                                        }
+                                    }
                                 ?>
-                            </span>-->
+                            </span>
 						</header>
 						
 						<div class="panel-body">
@@ -99,22 +99,28 @@
 											</div>
 										</div>
 										<div class="form-group">
-											<label for="total" class="col-sm-2 control-label col-lg-2">Total</label>
+											<label for="charges" class="col-sm-2 control-label col-lg-2">Freight Charges</label>
 											<div class="col-lg-4">
-												<input type="text" class="form-control" id="total" name="total" value="<?php echo $quotation->total; ?>" disabled />
+												<input type="text" id="freight_charges" name="freight_charges" class="form-control" value="<?php echo set_value('freight_charges',$quotation->freight); ?>" onkeyup="calculateSubTotal(this);" disabled />
 											</div>
 											
-											<label for="charges" class="col-sm-2 control-label col-lg-2">Other Charges</label>
+											<label for="charges" class="col-sm-2 control-label col-lg-2">Service Charges</label>
 											<div class="col-lg-4">
 												<input type="text" id="charges" name="charges" class="form-control" value="<?php echo set_value('charges',$quotation->charges); ?>" onkeyup="calculateSubTotal(this);" disabled />
 											</div>
 										</div>
 										<div class="form-group">
+											<label for="total" class="col-sm-2 control-label col-lg-2">Gross Total</label>
+											<div class="col-lg-4">
+												<input type="text" class="form-control" id="total" name="total" value="<?php echo $quotation->total; ?>" disabled />
+											</div>
+											
 											<label for="note" class="col-sm-2 control-label col-lg-2">Internal Note</label>
 											<div class="col-lg-4">
 												<textarea id="note" name="note" class="form-control" disabled ><?php echo set_value('note',$quotation->internal_note); ?></textarea>
 											</div>
-											
+										</div>
+										<div class="form-group">
 											<label for="status" class="col-sm-2 control-label col-lg-2">Status</label>
 											<div class="col-lg-4">
 												<select class="form-control" name="status" id="status" disabled >

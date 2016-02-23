@@ -6,7 +6,7 @@ class Quotations_model extends CI_Model{
     }
     
     function getQuotes(){
-        $q = $this->db->select('quotations.id,branch.branch_name,quotation_date,validity,customers.name,total')
+        $q = $this->db->select('quotations.id,branch.branch_name,quotation_date,validity,customers.name,total,quotations.qo_no')
 		->from('quotations')
         ->join('branch','branch.id = quotations.branch_id')
         ->join('customers','customers.id = quotations.customer_id')

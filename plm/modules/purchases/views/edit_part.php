@@ -45,7 +45,7 @@
                                 '<input type="text" class="form-control" placeholder="Purchase Parts Product Cost" id="parts_product_cost-'+count+'" name="parts_product_cost'+count+'" disabled>'+
                             '</td>'+
                             '<td>'+
-                                '<input type="text" class="form-control" placeholder="Service Tax" id="service_tax-'+count+'" name="service_tax'+count+'">'+
+                                '<input type="text" class="form-control" placeholder="Service Tax" id="service_tax-'+count+'" name="service_tax'+count+'" value="0">'+
                             '</td>'+
                             '<td>'+
                                 '<select class="form-control" id="parts_received-'+count+'" name="parts_received'+count+'">'+

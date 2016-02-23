@@ -6,15 +6,24 @@
                 tableTools: {
                     "sSwfPath": "http://cdnjs.cloudflare.com/ajax/libs/datatables-tabletools/2.1.5/swf/copy_csv_xls_pdf.swf",
                     "aButtons": [
-                        "copy",
-                        "csv",
+                        {
+							"sExtends": "copy",
+							"mColumns": [0, 1, 2, 3, 4],
+						},
+						{
+							"sExtends": "csv",
+							"mColumns": [0, 1, 2, 3, 4],
+						},
                         "xls",
                         {
                             "sExtends": "pdf",
                             "sPdfOrientation": "landscape",
                             "sPdfMessage": "Your custom message would go here."
                         },
-                        "print"
+                        {
+							"sExtends": "print",
+							"mColumns": [0, 1, 2, 3, 4],
+						}
                     ]
                 }
             } );
@@ -70,7 +79,7 @@
 											<th>Customer Name</th>
 											<th>Model Name</th>
 											<th>Serial No</th>
-											<th>Age Of Machine</th>
+											<!--<th>Age Of Machine</th>-->
 											<th>Action</th>
 										</tr>
 									</thead>
@@ -86,7 +95,7 @@
                                             <td><?php echo $row->customer_name; ?></td>
                                             <td><?php echo $row->model_name; ?></td>
                                             <td><?php echo $row->serial_no; ?></td>
-                                            <td><?php echo $this->products_model->getAgeOfMachine($row->ID); ?></td>
+                                            <!--<td><?php echo $this->products_model->getAgeOfMachine($row->ID); ?></td>-->
                                             <td><a href="<?php echo base_url(); ?>index.php/products/view/<?php echo $row->ID; ?>"><i class='fa fa-eye'></i></a>&nbsp;&nbsp;<a href="<?php echo base_url(); ?>index.php/products/edit/<?php echo $row->ID; ?>"><i class='fa fa-pencil-square-o'></i></a>&nbsp;&nbsp;<a href="<?php echo base_url(); ?>index.php/products/delete/<?php echo $row->ID; ?>" onclick="return confirm('Are you sure you want to delete?');"><i class='fa fa-trash-o'></i></a></td>
                                         </tr>
                                         <?php

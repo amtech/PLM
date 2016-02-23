@@ -60,16 +60,22 @@
                                 }
                             ?>
                         </header>
+						<?php 
+							// echo '<pre>';
+							// print_r($quotations);
+							// echo '</pre>';
+						?>
                         <div class="panel-body">
                             <div class="adv-table">
 								<table  class="display table table-bordered table-striped" id="quotation_view">
 									<thead>
 										<tr>
 											<th>Branch</th>
+											<th>Quotation No</th>
 											<th>Quotation Date</th>
                                             <th>Validity</th>
 											<th>Company	</th>
-                                            <th>Total</th>
+                                            <th>Gross Total</th>
 											<th>Action</th>
 										</tr>
 									</thead>
@@ -81,6 +87,7 @@
                                         ?>
                                         <tr>
                                             <td><?php echo $row->branch_name; ?></td>
+                                            <td><?php echo $row->qo_no; ?></td>
                                             <td><?php echo $row->quotation_date; ?></td>
                                             <td><?php echo $row->validity; ?></td>
                                             <td><?php echo $row->name; ?></td>
