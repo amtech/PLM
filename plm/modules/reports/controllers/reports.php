@@ -137,5 +137,16 @@ class Reports extends CI_Controller{
         $this->load->view('equipment_brand',$data);
         $this->load->view('commons/footer');
     }
+	
+	function customer_equipment(){
+		$data['equip'] = $this->reports_model->getEquipmentByCustomer();
+		// echo '<pre>';
+		// print_r($data['equip']);exit;
+		$data['page_title'] = "Customer Equipments";
+        $meta['page_title'] = "Customer Equipments";
+        $this->load->view('commons/header',$meta);
+        $this->load->view('customer_equipment',$data);
+        $this->load->view('commons/footer');
+	}
 }
 ?>

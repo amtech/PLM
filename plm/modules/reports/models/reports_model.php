@@ -144,5 +144,16 @@ class Reports_model extends CI_Model{
         }
         return false;
     }
+	
+	function getEquipmentByCustomer(){
+		$q = $this->db->select('products.*,customers.name,categories.category_name,brand.brand_name')->from('records')->join('products','records.product_id = products.id')->join('customers','customers.id = records.customer_id')->join('categories','categories.id = products.category_id')->join('brand','brand.id = products.brand_id')->get();
+		if($q->num_rows() > 0){
+			foreach($q->result() as $row){
+				$row1[] = $row;
+			}
+			return $row1;
+		}
+		return false;
+	}
 }
 ?>
