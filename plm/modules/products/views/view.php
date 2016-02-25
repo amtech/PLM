@@ -38,12 +38,12 @@
                                     <input type="text" class="form-control" id="category_name" placeholder="Category Name" name="category_name" value="<?php echo set_value('category_name',$products->category_name); ?>" disabled>
                                 </div>
                             </div>
-							<div class="form-group">
+							<!--<div class="form-group">
                                 <label for="model_name" class="col-lg-3  control-label">Customer Name</label>
                                 <div class="col-lg-9">
                                     <input type="text" class="form-control" id="customer_name" placeholder="Customer Name" name="customer_name" value="<?php echo set_value('customer_name',$products->customer_name); ?>" disabled>
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="form-group">
                                 <label for="model_name" class="col-lg-3  control-label">Model Name</label>
                                 <div class="col-lg-9">

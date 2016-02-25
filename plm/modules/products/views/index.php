@@ -76,7 +76,7 @@
 										<tr>
 											<th>Brand Name</th>
 											<th>Category</th>
-											<th>Customer Name</th>
+											<!--<th>Customer Name</th>-->
 											<th>Model Name</th>
 											<th>Serial No</th>
 											<!--<th>Age Of Machine</th>-->
@@ -92,7 +92,7 @@
                                         <tr>
                                             <td><?php echo $row->brand; ?></td>
                                             <td><?php echo $row->category_name; ?></td>
-                                            <td><?php echo $row->customer_name; ?></td>
+                                            <!--<td><?php echo $row->customer_name; ?></td>-->
                                             <td><?php echo $row->model_name; ?></td>
                                             <td><?php echo $row->serial_no; ?></td>
                                             <!--<td><?php echo $this->products_model->getAgeOfMachine($row->ID); ?></td>-->

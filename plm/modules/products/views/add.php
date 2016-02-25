@@ -81,12 +81,12 @@
                                 ?>
                                 </div>
                             </div>
-							<div class="form-group">
+							<!--<div class="form-group">
                                 <label for="customer_name" class="col-lg-3  control-label">Customer Name</label>
                                 <div class="col-lg-9">
                                     <input type="text" class="form-control" id="customer_name" placeholder="Customer Name" name="customer_name" value="<?php echo set_value('customer_name'); ?>">
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="form-group">
                                 <label for="model_name" class="col-lg-3  control-label">Model Name</label>
                                 <div class="col-lg-9">
