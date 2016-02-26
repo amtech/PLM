@@ -350,5 +350,35 @@ class Sales extends CI_Controller{
         }
         return false;
     }
+	
+	function so_pdf($id = NULL){
+		if($id){
+			if(is_numeric($id) && $id != 0){
+				$data['sales'] = $this->sales_model->getSalesById($id);
+				$data['sale_items'] = $this->sales_model->getSaleItemById($id);
+				// echo '<pre>';
+				// print_r($data['sales']);exit;
+				$data['page_title'] = "Sales Order";
+				// $this->load->view('sales_order',$data);
+				$html = $this->load->view('sales_order', $data, true);
+		 
+				//this the the PDF filename that user will get to download
+				$pdfFilePath = "output_pdf_name.pdf";
+		 
+				//load mPDF library
+				$this->load->library('m_pdf');
+		 
+			   //generate the PDF from the given html
+				$this->m_pdf->pdf->WriteHTML($html);
+		 
+				//download it.
+				$this->m_pdf->pdf->Output($pdfFilePath, "D");
+			}else{
+				show_404();
+			}
+		}else{
+			show_404();
+		}
+	}
 }
 ?>

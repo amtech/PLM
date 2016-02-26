@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Sales Order</title>
+	<title><?php echo $page_title; ?></title>
 	<style>
 		.heading{
 			text-align:right;
 			width:100%;
 		}
-		.sub-heading{
+		.main{
 			width:100%;
-			margin-bottom:55px;
+		}
+		.sub-heading{
+			float:right;
+			width:70%;
+			margin-bottom:10px;
 		}
 		.sub-heading table{
 			float:right;
-			width:70%;
+			width:100%;
 		}
 		.sales_order_desc{
 			width:100%;
@@ -53,13 +57,20 @@
 		.parts_description table{
 			width:100%;
 		}
+		.footer{
+			width:100%;
+		}
 		.sign{
 			margin-top:50px; 
 			width:50%;
 			float:left;
 		}
+		.sign table{
+			float:left;
+		}
 		.sign th{
 			float:left;
+			text-align:left;
 		}
 		.sign table tr{
 			margin-bottom:10px;
@@ -69,23 +80,30 @@
 			float:right;
 		}
 		.total table{
+			width:100%;
 			float:right;
+			margin-top:-50px;
+		}
+		table {
+			border-collapse: collapse;
 		}
 	</style>
 </head>
 <body>
 	<div class="heading">
-		<h2>Sales Order</h2>
+		<h2><?php echo $page_title; ?></h2>
 	</div>
-	<div class="sub-heading">
-		<table border="1" cellpadding="4" cellspacing="0">
-			<tr>
-				<th>SALES ORDER NO.</th>
-				<td>&nbsp;&nbsp;&nbsp;SM15-681</td>
-				<th>DATE</th>
-				<td>&nbsp;&nbsp;&nbsp;26-02-2016</td>
-			</tr>
-		</table>
+	<div class="main">
+		<div class="sub-heading">
+			<table border="1" cellpadding="4" cellspacing="0">
+				<tr>
+					<th>SALES ORDER NO.</th>
+					<td>&nbsp;&nbsp;&nbsp;<?php echo $sales->po_no; ?></td>
+					<th>DATE</th>
+					<td>&nbsp;&nbsp;&nbsp;<?php echo date('d-m-Y',strtotime($sales->date)); ?></td>
+				</tr>
+			</table>
+		</div>
 	</div>
 	<div class="sales_order_desc">
 		<table cellpadding="4" cellspacing="0" border="1">
@@ -93,7 +111,7 @@
 				<th>CLIENT P.O.NO.</th>
 				<td>&nbsp;&nbsp;&nbsp;</td>
 				<th>Soilmec Quotation NO.#</th>
-				<td>&nbsp;&nbsp;&nbsp;</td>
+				<td>&nbsp;&nbsp;&nbsp;<?php echo $sales->quotation_no; ?></td>
 			<tr>
 		</table>
 	</div>
@@ -101,9 +119,9 @@
 		<table cellpadding="4" cellspacing="0" border="1">
 			<tr>
 				<th>Payment Term</th>
-				<td>&nbsp;&nbsp;&nbsp;Test</td>
+				<td>&nbsp;&nbsp;&nbsp;<?php echo $sales->payment_terms; ?></td>
 				<th>Ship Date</th>
-				<td>&nbsp;&nbsp;&nbsp;26-02-2016</td>
+				<td>&nbsp;&nbsp;&nbsp;<?php echo date('d-m-Y',strtotime($sales->ship_date)); ?></td>
 			</tr>
 		</table>
 	</div>
@@ -115,7 +133,7 @@
 			</tr>
 			<tr>
 				<td></td>
-				<td></td>
+				<td><?php echo $sales->ship_to; ?></td>
 			</tr>
 		</table>
 	</div>
@@ -123,9 +141,9 @@
 		<table cellspacing="0" cellpadding="4" border="1">
 			<tr>
 				<th>Ship Via</th>
-				<td>&nbsp;&nbsp;&nbsp;</td>
+				<td>&nbsp;&nbsp;&nbsp;<?php echo $sales->ship_via; ?></td>
 				<th>Delivery Instruction</th>
-				</td>&nbsp;&nbsp;&nbsp;</td>
+				<td>&nbsp;&nbsp;&nbsp;<?php echo $sales->delivery; ?></td>
 			</tr>
 		</table>
 	</div>
@@ -140,15 +158,24 @@
 				<th>To Pick</th>
 				<th>Amount</th>
 			</tr>
+			<?php 
+				if(!empty($sale_items)){
+					$i = 0;
+					foreach($sale_items as $row){
+			?>
 			<tr>
-				<td>1</td>
-				<td>test</td>
-				<td>10</td>
-				<td>10</td>
-				<td>Yes</td>
-				<td>Damman</td>
-				<td>100</td>
+				<td><?php echo $i+= 1; ?></td>
+				<td><?php echo $row->description; ?></td>
+				<td><?php echo $row->quantity; ?></td>
+				<td><?php echo $row->price; ?></td>
+				<td></td>
+				<td></td>
+				<td><?php echo $row->sub_total; ?></td>
 			</tr>
+			<?php
+					}
+				}
+			?>
 		</table>
 	</div>
 	<div class="footer">
@@ -159,10 +186,10 @@
 			</table>
 		</div>
 		<div class="total">
-			<table cellpadding="4" cellspacing="0" border="1" width="50%">
+			<table cellpadding="4" cellspacing="0" border="1">
 				<tr>
 					<th>Total</th>
-					<td style="text-align:right;">SAR 100.000</td>
+					<td style="text-align:right;">SAR <?php echo $sales->total; ?></td>
 				</tr>
 			</table>
 		</div>
