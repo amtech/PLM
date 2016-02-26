@@ -40,11 +40,12 @@ class Parts extends CI_Controller{
         $this->load->view('commons/footer');
         
     }
-    
-    function add(){
+	
+	function add(){
         // validation for brand
         $this->form_validation->set_rules('brand_id', 'Brand', 'trim|required|callback_check_brand');
         $this->form_validation->set_rules('code', 'Code', 'trim|required|is_unique[parts.code]');
+		$this->form_validation->set_message('is_unique','The %s is already exist.');
         $this->form_validation->set_rules('name', 'Part Name', 'trim|required');
         $this->form_validation->set_rules('part_desc', 'Brand Description', 'trim');
         $this->form_validation->set_rules('serial_no', 'Serial Number', 'trim');

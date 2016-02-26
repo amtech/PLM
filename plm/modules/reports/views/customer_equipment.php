@@ -15,7 +15,6 @@
                         {
                             "sExtends": "pdf",
                             "sPdfOrientation": "landscape",
-                            "sPdfMessage": "Your custom message would go here."
                         },
                         "print"
                     ]

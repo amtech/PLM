@@ -317,5 +317,23 @@ class Purchases_model extends CI_Model{
             return  false;
         }
     }
+	
+	function getPurchaseByID($id = NULL){
+		$q = $this->db->select('purchase_parts.*,vendor.company_name,vendor.email,vendor.contact_person')->from('purchase_parts')->join('vendor','vendor.id = purchase_parts.vendor_reference')->where('purchase_parts.id',$id)->get();
+		if($q->num_rows() > 0){
+			return $q->row();
+		}
+		return false;
+	}
+	
+	function getPurchasePartByID($id = NULL){
+		$q = $this->db->select('*')->from('purchase_part_items')->where('purchase_part_id',$id)->get();
+		if($q->num_rows() > 0){
+			foreach($q->result() as $row){
+				$row1[] = $row;
+			}
+			return $row1;
+		}
+	}
 }
 ?>

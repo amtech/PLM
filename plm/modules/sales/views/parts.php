@@ -111,7 +111,7 @@
                                             <td><?php echo $row->discount_value; ?></td>
                                             <td><?php echo $row->total; ?></td>
                                             <td><?php echo $row->status; ?></td>
-                                            <td><a href="<?php echo base_url(); ?>index.php/sales/view_part/<?php echo $row->id; ?>"><i class='fa fa-eye'></i></a>&nbsp;&nbsp;<a href="<?php echo base_url(); ?>index.php/sales/edit_part/<?php echo $row->id; ?>"><i class='fa fa-pencil-square-o'></i></a>&nbsp;&nbsp;<a href="<?php echo base_url(); ?>index.php/sales/delete_part/<?php echo $row->id; ?>" onclick="return confirm('Are you sure you want to delete?');"><i class='fa fa-trash-o'></i></a>  <a href="<?php echo base_url(); ?>index.php/sales/pdf/<?php echo $row->id; ?>">PDF</a></td>
+                                            <td><a href="<?php echo base_url(); ?>index.php/sales/view_part/<?php echo $row->id; ?>"><i class='fa fa-eye'></i></a>&nbsp;&nbsp;<a href="<?php echo base_url(); ?>index.php/sales/edit_part/<?php echo $row->id; ?>"><i class='fa fa-pencil-square-o'></i></a>&nbsp;&nbsp;<a href="<?php echo base_url(); ?>index.php/sales/delete_part/<?php echo $row->id; ?>" onclick="return confirm('Are you sure you want to delete?');"><i class='fa fa-trash-o'></i></a>  <a href="<?php echo base_url(); ?>index.php/sales/pdf/<?php echo $row->id; ?>">PDF</a>&nbsp;&nbsp;<a href="<?php echo base_url(); ?>index.php/sales/so_pdf/<?php echo $row->id; ?>">SalesOrder</a></td>
                                         </tr>
                                         <?php
                                                 }

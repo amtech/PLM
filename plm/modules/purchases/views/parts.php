@@ -89,7 +89,7 @@
                                             <td><?php echo $row->ship_via; ?></td>
                                             <td><?php echo $row->ship_to; ?></td>
                                             <td><?php echo $row->total; ?></td>
-                                            <td><a href="<?php echo base_url(); ?>index.php/purchases/viewPart/<?php echo $row->id; ?>"><i class='fa fa-eye'></i></a>&nbsp;&nbsp;<a href="<?php echo base_url(); ?>index.php/purchases/edit_part/<?php echo $row->id; ?>"><i class='fa fa-pencil-square-o'></i></a>&nbsp;&nbsp;<a href="<?php echo base_url(); ?>index.php/purchases/delete_part/<?php echo $row->id; ?>" onclick="return confirm('Are you sure you want to delete?');"><i class='fa fa-trash-o'></i></a></td>
+                                            <td><a href="<?php echo base_url(); ?>index.php/purchases/viewPart/<?php echo $row->id; ?>"><i class='fa fa-eye'></i></a>&nbsp;&nbsp;<a href="<?php echo base_url(); ?>index.php/purchases/edit_part/<?php echo $row->id; ?>"><i class='fa fa-pencil-square-o'></i></a>&nbsp;&nbsp;<a href="<?php echo base_url(); ?>index.php/purchases/delete_part/<?php echo $row->id; ?>" onclick="return confirm('Are you sure you want to delete?');"><i class='fa fa-trash-o'></i></a>&nbsp;&nbsp;<a href="<?php echo base_url(); ?>index.php/purchases/pdf/<?php echo $row->id; ?>">PDF</a></td>
                                         </tr>
                                         <?php
                                                 }

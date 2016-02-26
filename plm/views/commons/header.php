@@ -203,7 +203,7 @@
                         <li><a href="<?php echo base_url(); ?>index.php/reports/inventory"> Inventory</a></li>
                         <li><a href="<?php echo base_url(); ?>index.php/reports/purchase_order">Sales Order</a></li>
                         <li><a href="<?php echo base_url(); ?>index.php/reports/stock_vendor"> Purchase From Vendor</a></li>
-                        <li><a href="<?php echo base_url(); ?>index.php/reports/customer_equipment"> Customer Equipment</a></li>
+                        <li><a href="<?php echo base_url(); ?>index.php/reports/customer_equipment"> Reference Equipment Report</a></li>
                     </ul>
                 </li>
                 <?php

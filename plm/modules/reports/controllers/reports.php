@@ -142,8 +142,8 @@ class Reports extends CI_Controller{
 		$data['equip'] = $this->reports_model->getEquipmentByCustomer();
 		// echo '<pre>';
 		// print_r($data['equip']);exit;
-		$data['page_title'] = "Customer Equipments";
-        $meta['page_title'] = "Customer Equipments";
+		$data['page_title'] = "Reference Equipments Report";
+        $meta['page_title'] = "Reference Equipments Report";
         $this->load->view('commons/header',$meta);
         $this->load->view('customer_equipment',$data);
         $this->load->view('commons/footer');
