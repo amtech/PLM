@@ -159,7 +159,7 @@ class Purchases extends CI_Controller{
 				'ship_to'					=> $this->input->post('ship_to'),
 				'total'						=> $this->input->post('grand_total'),
                 'user'                      =>  USER_ID,
-				'creation_time'				=> date('Y-m-d H:m:s'),
+				'updation_time'				=> date('Y-m-d H:m:s'),
 			);
 
 			// echo '<pre>';
@@ -198,7 +198,7 @@ class Purchases extends CI_Controller{
 			$data['parts'] = $this->purchases_model->getParts();
             $data['purchase_part'] = $this->purchases_model->getPurchaseParts($id);
             // echo '<pre>';
-            // print_r($data['purchase_part']);exit;
+            // print_r($data['warehouses']);exit;
             $data['po_no'] = array('name' => 'po_no',
 				'id' => 'po_no',
 				'type' => 'text',
@@ -260,7 +260,13 @@ class Purchases extends CI_Controller{
 	function pdf($id = NULL){
 		if(is_numeric($id)){
 			$data['purchase'] = $this->purchases_model->getPurchaseByID($id);
-			$data['amount_words'] = $this->convert_number_to_words($data['purchase']->total);
+			$num = explode('.',$data['purchase']->total);
+			if($num[1] == 00){
+				$number = round($data['purchase']->total);
+				$data['amount_words'] = $this->convert_number_to_words($number);
+			}else{
+				$data['amount_words'] = $this->convert_number_to_words($data['purchase']->total);
+			}
 			$data['parts'] = $this->purchases_model->getPurchasePartByID($id);
 			// echo '<pre>';
 			// print_r($data['parts']);exit;

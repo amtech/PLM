@@ -81,7 +81,7 @@ class Records_model extends CI_Model{
     }
     
     function getRecords(){
-        $q = $this->db->select('records.id,brand.brand_name,categories.category_name,products.model_name,products.serial_no,products.model_name,customers.name,delivery_date,records.status')
+        $q = $this->db->select('records.ro_no as RO_NO,records.id,brand.brand_name,categories.category_name,products.model_name,products.serial_no,products.model_name,customers.name,delivery_date,records.status')
 		->from('records')
         ->join('products','products.id = records.product_id')
         ->join('categories','categories.id = products.category_id')

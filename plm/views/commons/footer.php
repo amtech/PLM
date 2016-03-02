@@ -19,6 +19,7 @@
 <!--dynamic table-->
 <script src="<?php echo base_url(); ?>assets/js/data-tables/jquery.dataTables.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/data-tables/dataTables.tableTools.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/date_format.js"></script>
 
 </body>
 </html>

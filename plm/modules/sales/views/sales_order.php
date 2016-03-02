@@ -21,7 +21,7 @@
 		}
 		.sales_order_desc{
 			width:100%;
-			margin-bottom:2px;
+			margin-bottom:10px;
 		}
 		.sales_order_desc table{
 			width:100%;
@@ -35,7 +35,7 @@
 		}
 		.address_ship{
 			width:100%;
-			margin-bottom:2px;
+			margin-bottom:10px;
 		}
 		.address_ship table{
 			width:100%;
@@ -82,7 +82,7 @@
 		.total table{
 			width:100%;
 			float:right;
-			margin-top:-50px;
+			margin-top:-30px;
 		}
 		table {
 			border-collapse: collapse;
@@ -90,6 +90,7 @@
 	</style>
 </head>
 <body>
+	<div style="height:100px;width:100%;"></div>
 	<div class="heading">
 		<h2><?php echo $page_title; ?></h2>
 	</div>
@@ -109,7 +110,7 @@
 		<table cellpadding="4" cellspacing="0" border="1">
 			<tr>
 				<th>CLIENT P.O.NO.</th>
-				<td>&nbsp;&nbsp;&nbsp;</td>
+				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 				<th>Soilmec Quotation NO.#</th>
 				<td>&nbsp;&nbsp;&nbsp;<?php echo $sales->quotation_no; ?></td>
 			<tr>
@@ -132,7 +133,7 @@
 				<th>Ship To</th>
 			</tr>
 			<tr>
-				<td></td>
+				<td><?php echo $sales->name; echo '<br/>'; echo $sales->address; ?></td>
 				<td><?php echo $sales->ship_to; ?></td>
 			</tr>
 		</table>
@@ -150,6 +151,7 @@
 	<div class="parts_description">
 		<table cellspacing="0" cellpadding="4" border="1">
 			<tr>
+				<th>SR No.</th>
 				<th>Code</th>
 				<th>Description</th>
 				<th>QTY</th>
@@ -165,10 +167,11 @@
 			?>
 			<tr>
 				<td><?php echo $i+= 1; ?></td>
+				<td><?php echo $row->code; ?></td>
 				<td><?php echo $row->description; ?></td>
 				<td><?php echo $row->quantity; ?></td>
 				<td><?php echo $row->price; ?></td>
-				<td></td>
+				<td><?php echo ucfirst($row->item_received); ?></td>
 				<td></td>
 				<td><?php echo $row->sub_total; ?></td>
 			</tr>
@@ -189,7 +192,7 @@
 			<table cellpadding="4" cellspacing="0" border="1">
 				<tr>
 					<th>Total</th>
-					<td style="text-align:right;">SAR <?php echo $sales->total; ?></td>
+					<td style="text-align:right;">EUR <?php echo $sales->total; ?></td>
 				</tr>
 			</table>
 		</div>

@@ -3,6 +3,9 @@
             var oTable = $('#record_view').dataTable( {
                 "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 dom: 'T<"clear">lfrtip',
+				"aoColumnDefs" : [
+                    {"aTargets": [6],"mRender": format_ddmmyyyy},
+                ],
                 tableTools: {
                     "sSwfPath": "http://cdnjs.cloudflare.com/ajax/libs/datatables-tabletools/2.1.5/swf/copy_csv_xls_pdf.swf",
                     "aButtons": [
@@ -19,7 +22,7 @@
                 }
             } );
         } );
-        </script>
+		</script>
         <!-- page heading start-->
         <div class="page-heading">
             <?php if($this->session->flashdata('success')) { ?>
@@ -65,6 +68,7 @@
 								<table  class="display table table-bordered table-striped" id="record_view">
 									<thead>
 										<tr>
+											<th>Record No</th>
 											<th>Brand</th>
                                             <th>Category</th>
                                             <th>Model Name</th>
@@ -84,6 +88,7 @@
                                                 foreach($records as $row){
                                         ?>
                                         <tr>
+                                            <td><?php echo $row->RO_NO; ?></td>
                                             <td><?php echo $row->brand_name; ?></td>
                                             <td><?php echo $row->category_name; ?></td>
                                             <td><?php echo $row->model_name; ?></td>

@@ -28,18 +28,20 @@
 	</style>
 </head>
 <body>
+	<div style="height:100px; width:100%;">
+	</div>
 	<table width="100%" border="1" cellspacing="0" id="cssTable">
 		<thead>
 			<tr>
 				<th width="30%">Company</th>
-				<th colspan="2" class="noBorder" style="border-bottom: hidden; width:40%"><?php echo $quotation->contact_person; ?></th>
+				<th colspan="2" class="noBorder" style="border-bottom: hidden; width:40%"><?php echo $quotation->name; ?></th>
 				<th class="noBorder" width="15%">Machine</th>
 				<th class="noBorder" width="15%"><?php echo $quotation->machine_name; ?></th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td rowspan="3"><?php echo $quotation->name; ?></td>
+				<td rowspan="3">Attn:&nbsp;&nbsp;<?php echo $quotation->contact_person; ?></td>
 				<td>
 					<tr>
 						<td style="text-align:left;">cc:</td>
@@ -49,7 +51,7 @@
 					</tr>
 				</tr>
 				<tr>
-					<td style="text-align:left;">cc:</td>
+					<td style="text-align:left;width:20%;">cc:</td>
 					<td style="text-align:center;">PAGES</td>
 					<td style="text-align:center;">1/1</td>
 				</tr>
@@ -60,15 +62,22 @@
 		<p>Dear sir,</p>
 		<p>With reference to your inquiry, we are pleased to submit our best offer for the following spare parts.</p>
 	</div>
+	<?php
+		// echo '<pre>';
+		// print_r($quotation_items);
+		// echo '</pre>';
+	?>
 	<table width="100%" border="1" cellspacing="0" cellpadding="0" id="spare_parts">
 		<thead>
 			<tr>
 				<th width="5%">S#</th>
 				<th width="15%">Part No.</th>
-				<th width="30%">Description</th>
+				<th width="20%">Description</th>
 				<th width="10%">QTY</th>
 				<th width="10%">Unit Price</th>
-				<th width="20%">Total Price</th>
+				<th width="10%">Discount</th>
+				<th width="10%">Discount Price</th>
+				<th width="10%">Total Price</th>
 				<th width="10%">Delivery Time</th>
 			</tr>
 		</thead>
@@ -76,17 +85,29 @@
 			<?php 
 				if(!empty($quotation_items)){
 					$sum = 0;
+					$i = 0;
 					foreach($quotation_items as $row){
-						$i = 0;
 						$sum += $row->sub_total;
 			?>
 			<tr>
-				<td><?php echo $i+1; ?></td>
+				<td><?php echo $i+=1; ?></td>
 				<td><?php echo $row->code; ?></td>
 				<td><?php echo $row->description; ?></td>
 				<td><?php echo $row->quantity; ?></td>
 				<td><?php echo $row->price; ?></td>
-				<td><?php echo number_format((float)(($row->quantity)*($row->price)), 2, '.', ''); ?></td>
+				<?php
+					if($row->discount_type == 0){
+				?>
+				<td>0%</td>
+				<?php
+					}else{
+				?>
+				<td><?php echo $disc = $this->quotations_model->getDiscountValType($row->discount_type); ?>%</td>
+				<?php
+					}
+				?>
+				<td><?php echo $row->discount_value; ?></td>
+				<td><?php echo $row->sub_total;//echo number_format((float)(($row->quantity)*($row->price)), 2, '.', ''); ?></td>
 				<td><?php echo date('d/m/Y',strtotime($row->delivery_date)); ?></td>
 			</tr>
 			<?php
@@ -95,26 +116,44 @@
 			?>
 			<tr>
 				<td></td>
-				<td colspan="4" style="text-align:right;">Total Saudi Riyal &nbsp;&nbsp;</td>
+				<td colspan="6" style="text-align:right;">Total Saudi Riyal &nbsp;&nbsp;</td>
 				<td><?php echo number_format((float)($sum), 2, '.', ''); ?></td>
 				<td></td>
 			</tr>
-			<tr>
+			<!--<tr>
 				<td></td>
-				<td colspan="4" style="text-align:right;">Discount &nbsp;&nbsp;</td>
+				<td colspan="6" style="text-align:right;">Discount &nbsp;&nbsp;</td>
 				<td><?php echo $row->discount_value; ?></td>
 				<td></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td colspan="4" style="text-align:right;">Total Discounted Price &nbsp;&nbsp;</td>
+				<td colspan="6" style="text-align:right;">Total Discounted Price &nbsp;&nbsp;</td>
 				<td><?php echo number_format((float)($sum), 2, '.', ''); ?></td>
+				<td></td>
+			</tr>-->
+			<tr>
+				<td></td>
+				<td colspan="6" style="text-align:right;">Gross Total &nbsp;&nbsp;</td>
+				<td><?php echo $quotation->total; ?></td>
 				<td></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td colspan="4" style="text-align:right;">Grand Total &nbsp;&nbsp;</td>
-				<td><?php echo $quotation->total; ?></td>
+				<td colspan="6" style="text-align:right;">Service Charge&nbsp;&nbsp;</td>
+				<td><?php echo $quotation->charges; ?></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td colspan="6" style="text-align:right;">Freight Charge&nbsp;&nbsp;</td>
+				<td><?php echo $quotation->freight; ?></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td colspan="6" style="text-align:right;">Net Total&nbsp;&nbsp;</td>
+				<td><?php echo number_format((float)(($quotation->total)+($quotation->charges)+($quotation->freight)),2,'.',''); ?></td>
 				<td></td>
 			</tr>
 		</tbody>
@@ -136,8 +175,9 @@
 	</div>
 	<div style="line-height:4px;">
 		<p>Best regards,</p>
-		<p>Eng.Mohamed Nadeem</p>
-		<p style="">After Sales & Parts Manager</p>
+		<br/>
+		<p>________________________</p>
+		<p style="">Sales Manager</p>
 	<div>
 </body>
 </html>

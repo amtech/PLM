@@ -114,7 +114,7 @@
                                         if(!empty($parts)){
                                             foreach($parts as $rowParts){
                                     ?>
-                                    '<option value="<?php echo $rowParts->id; ?>"><?php echo $rowParts->code; ?></option>'+
+                                    '<option value="<?php echo $rowParts->id; ?>"><?php echo $rowParts->code.' - '.$rowParts->serial_no; ?></option>'+
                                     <?php            
                                             }
                                         }
@@ -324,7 +324,7 @@
                                 $optionRecord = array(''=>'--Select--');
                                 if(!empty($records)){
                                     foreach($records as $rowRecord){
-                                        $optionRecord[$rowRecord->id] = $rowRecord->ro_no;
+                                        $optionRecord[$rowRecord->id] = $rowRecord->ro_no.' - '.$rowRecord->serial_no;
                                     }
                                 }
                                 echo form_dropdown('record_id',$optionRecord,isset($_POST['record_id'])?$_POST['record_id']:'','class="form-control chosen-select" id="record_id"');
@@ -431,7 +431,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="table-responsive">
+						<div class="table-responsive">
                             <table class="table" id="myTable">
                                 <tbody>
                                     <tr>
@@ -453,10 +453,10 @@
                                             $optionParts = array('0'=>'--Select--');
                                             if(!empty($parts)){
                                                 foreach($parts as $rowParts){
-                                                    $optionParts[$rowParts->id] = $rowParts->serial_no;
+                                                    $optionParts[$rowParts->id] = $rowParts->code.' - '.$rowParts->serial_no;
                                                 }
                                             }
-                                            echo form_dropdown('parts_id1',$optionParts,isset($_POST['parts_id1'])?$_POST['parts_id1']:'','class="form-control" id="parts_id-1" onchange="getParts(this);"');
+											echo form_dropdown('parts_id1',$optionParts,isset($_POST['parts_id1'])?$_POST['parts_id1']:'','class="form-control" id="parts_id-1" onchange="getParts(this);"');
                                         ?>
                                         </td>
                                         <td>

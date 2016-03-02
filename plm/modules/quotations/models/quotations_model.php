@@ -113,6 +113,7 @@ class Quotations_model extends CI_Model{
         $this->db->where('quotation_id',$id);
         $this->db->join('parts','parts.id = quotation_items.part_id');
 		$q = $this->db->select('quotation_items.*,parts.code')->from('quotation_items')->get();
+		// echo $this->db->last_query();exit;
         // $q = $this->db->get('quotation_items');
         // echo $this->db->last_query();exit;
         if($q->num_rows() > 0){
@@ -201,5 +202,16 @@ class Quotations_model extends CI_Model{
             return  false;
         }
     }
+	
+	function getDiscountValType($id = NULL){
+		$q = $this->db->get_where('discount',array('id'=>$id));
+		// echo $this->db->last_query();exit;
+		if($q->num_rows() > 0){
+			foreach($q->result() as $row){
+				return $row->value;
+			}
+		}
+		return false;
+	}
 }
 ?>

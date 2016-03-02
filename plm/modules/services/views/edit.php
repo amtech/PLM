@@ -309,7 +309,7 @@
                                 $optionRecord = array('0'=>'--Select--');
                                 if(!empty($records)){
                                     foreach($records as $rowRecord){
-                                        $optionRecord[$rowRecord->id] = $rowRecord->ro_no;
+                                        $optionRecord[$rowRecord->id] = $rowRecord->ro_no.' - '.$rowRecord->serial_no;
                                     }
                                 }
                                 echo form_dropdown('record_id',$optionRecord,isset($_POST['record_id'])?$_POST['record_id']:$services[0]->record_id,'class="form-control chosen-select" id="record_id"');

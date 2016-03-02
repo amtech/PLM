@@ -46,7 +46,7 @@ class Products extends CI_Controller{
         $this->form_validation->set_rules('brand_id', 'Brand', 'trim|required|callback_check_brand');
         $this->form_validation->set_rules('category_id', 'Category', 'trim|required|callback_check_category');
         $this->form_validation->set_rules('sub_category_id', 'Category', 'trim|required');
-        $this->form_validation->set_rules('customer_name', 'Customer Name', 'trim|required');
+        $this->form_validation->set_rules('customer_name', 'Customer Name', 'trim');
         $this->form_validation->set_rules('model_name', 'Model Name', 'trim|required');
         $this->form_validation->set_rules('serial_no', 'Serial Number', 'trim');
         $this->form_validation->set_rules('cost', 'Cost', 'trim|required');
@@ -133,7 +133,7 @@ class Products extends CI_Controller{
         $this->form_validation->set_rules('brand_id', 'Brand', 'trim|required|callback_check_brand');
         $this->form_validation->set_rules('category_id', 'Category', 'trim|required|callback_check_category');
         $this->form_validation->set_rules('sub_category_id', 'Category', 'trim');
-		$this->form_validation->set_rules('customer_name', 'Customer Name', 'trim|required');
+		$this->form_validation->set_rules('customer_name', 'Customer Name', 'trim');
         $this->form_validation->set_rules('model_name', 'Model Name', 'trim|required');
         $this->form_validation->set_rules('serial_no', 'Serial Number', 'trim');
         $this->form_validation->set_rules('cost', 'Cost', 'trim|required');
@@ -276,7 +276,7 @@ class Products extends CI_Controller{
             $titles = array_shift($arrResult);
             $tempAr = array('brand_id'=>$this->input->post('brand_id'), 'category_id'=>$this->input->post('cat_id'), 'sub_category_id'=>$this->input->post('subcat_id'));
             
-            $keys = array('customer_name','model_name', 'serial_no', 'cost', 'alert');
+            $keys = array('model_name', 'serial_no', 'cost', 'alert');
             
             $final = array();
             foreach($arrResult as $key => $value){
@@ -292,7 +292,7 @@ class Products extends CI_Controller{
 					$brand[] = $csv_pr['brand_id'];
 					$cat[] = $csv_pr['category_id'];
 					$sub_cat[] = $csv_pr['sub_category_id'];
-					$customer_name[] = $csv_pr['customer_name'];
+					// $customer_name[] = $csv_pr['customer_name'];
 					$model_name[] = $csv_pr['model_name'];
 					$serial_no[] = $csv_pr['serial_no'];
 					$cost[] = $csv_pr['cost'];
@@ -300,10 +300,10 @@ class Products extends CI_Controller{
                 $rw++;	
 			}
             
-            $ikeys = array('brand_id', 'category_id', 'sub_category_id', 'customer_name','model_name', 'serial_no', 'cost','alert_quantity');
+            $ikeys = array('brand_id', 'category_id', 'sub_category_id','model_name', 'serial_no', 'cost','alert_quantity');
 		
 			$items = array();
-			foreach ( array_map(null, $brand, $cat, $sub_cat, $customer_name,$model_name, $serial_no, $cost,$alert) as $ikey => $value ) {
+			foreach ( array_map(null, $brand, $cat, $sub_cat,$model_name, $serial_no, $cost,$alert) as $ikey => $value ) {
 				$items[] = array_combine($ikeys, $value);
 			}
 			// echo '<pre>';

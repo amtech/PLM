@@ -300,24 +300,25 @@ class Quotations extends CI_Controller{
 		if(is_numeric($id)){
 			$quotation = $this->quotations_model->getQuotationById($id);
 			$data['quotation'] = $quotation;
-			$data['quotation_items'] = $this->quotations_model->getQuoteItemsByID($quotation->id);
+			$data['quotation_items'] = $this->quotations_model->getQuoteItemsByID($id);
 			// echo '<pre>';
-			// print_r($data['iban']);exit;
+			// print_r($data['quotation_items']);exit;
 			// $data = [];
 			//load the view and saved it into $html variable
-			$html = $this->load->view('quotation', $data, true);
+			$this->load->view('quotation', $data);
+			// $html = $this->load->view('quotation', $data, true);
 	 
-			//this the the PDF filename that user will get to download
-			$pdfFilePath = "output_pdf_name.pdf";
+			// //this the the PDF filename that user will get to download
+			// $pdfFilePath = "output_pdf_name.pdf";
 	 
-			//load mPDF library
-			$this->load->library('m_pdf');
+			// //load mPDF library
+			// $this->load->library('m_pdf');
 	 
-		   //generate the PDF from the given html
-			$this->m_pdf->pdf->WriteHTML($html);
+		   // //generate the PDF from the given html
+			// $this->m_pdf->pdf->WriteHTML($html);
 	 
-			//download it.
-			$this->m_pdf->pdf->Output($pdfFilePath, "D");
+			// //download it.
+			// $this->m_pdf->pdf->Output($pdfFilePath, "D");
 		}else{
 			show_404();
 		}

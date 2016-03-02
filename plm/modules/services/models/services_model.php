@@ -5,9 +5,10 @@ class Services_model extends CI_Model{
     }
     
     function getServices(){
-        $q = $this->db->select('services.id,records.ro_no,service_date,warranty,working_hour,services.technician_name,service_report_no,service_charge,parts_total,total')
+        $q = $this->db->select('services.id,records.ro_no,service_date,warranty,working_hour,services.technician_name,service_report_no,service_charge,parts_total,total,products.serial_no,products.model_name')
         ->from('services')
         ->join('records','records.id = services.record_id')
+		->join('products','records.product_id = products.id')
         ->get();
         if($q->num_rows() > 0){
             foreach($q->result() as $row){
@@ -20,10 +21,11 @@ class Services_model extends CI_Model{
     
     function getRecords(){
         // $q = $this->db->get('records');
-        $q = $this->db->select('records.id,records.ro_no,products.serial_no')
+        $q = $this->db->select('distinct(records.id),records.ro_no,products.serial_no')
             ->from('records')
             ->join('products','products.id = records.product_id')
             ->get();
+			// echo $this->db->last_query();exit;
         if($q->num_rows() > 0){
             foreach($q->result() as $row){
                 $row1[] = $row;

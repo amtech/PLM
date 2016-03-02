@@ -67,7 +67,7 @@
                                 <a class="custom-button" style="background:red !important; color:#fff;" href="<?php echo base_url(); ?>index.php/sales/inCompleteSales">InComplete</a>
                                 <a class="custom-button" style="background:green !important; color:#fff;" href="<?php echo base_url(); ?>index.php/sales/completeSales">Complete</a>
                                 <?php
-                                    if($this->ion_auth->in_group(array('salesman'))){
+                                    if($this->ion_auth->in_group(array('salesman','admin','manager'))){
                                 ?>
                                 <a class="custom-button" href="<?php echo base_url(); ?>index.php/sales/add_part"> Add Sale Part</a>
                                 <?php

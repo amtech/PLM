@@ -42,7 +42,7 @@
                                 '<input type="text" class="form-control" placeholder="Description" id="description-'+count+'" name="description'+count+'" disabled >'+
                             '</td>'+
                             '<td>'+
-                                '<input type="text" class="form-control" placeholder="Qty" id="parts_product_qty-'+count+'" name="parts_product_qty'+count+'" onkeyup="calculateSubTotal(this);" disabled>'+
+                                '<input type="text" class="form-control" placeholder="Qty" id="parts_product_qty-'+count+'" name="parts_product_qty'+count+'" onkeyup="calculateSubTotal(this);" value="1" disabled>'+
                             '</td>'+
                             '<td>'+
                                 '<input type="text" class="form-control" placeholder="Freight" id="parts_product_freight-'+count+'" name="parts_product_freight'+count+'" onkeyup="calculateSubTotal(this);" value="0.00" disabled>'+
@@ -128,6 +128,13 @@
                             $("#parts_product_cost-"+count).val(obj[0].cost);
                             $("#description-"+count).removeAttr("disabled");
                             $("#description-"+count).val(obj[0].name);
+							var qty = $("#parts_product_qty-"+count).val();
+							$("#parts_product_subtotal-"+count).val(parseFloat(obj[0].cost)*qty);
+							var total = 0;
+							$(".sub_total").each(function(){
+								 total += parseFloat($(this).val()||0);
+							});
+							$("#total_amt").val(total);
                         }catch(e) {      
                         alert(e);
                         alert('Exception while request..');
@@ -345,7 +352,7 @@
                                         </td>
                                         
                                         <td>
-                                            <input type="text" class="form-control" placeholder="Qty" id="parts_product_qty-1" name="parts_product_qty1" onkeyup="calculateSubTotal(this);" disabled >
+                                            <input type="text" class="form-control" placeholder="Qty" id="parts_product_qty-1" name="parts_product_qty1" onkeyup="calculateSubTotal(this);" value="1" disabled >
                                         </td>    
             							
             							<td>

@@ -263,7 +263,7 @@ class Purchases_model extends CI_Model{
         if($this->db->update('purchase_parts', $dataParts) && $this->db->delete('purchase_part_items', array('purchase_part_id' => $id))){
             
             foreach($items as $data){
-				$this->updatePartQuantity($data['part_id'], $warehouse_id, $data['part_quantity']);
+				$this->updatePartQuantity($data['part_id'], $data['part_quantity'], $warehouse_id, $data['cost'], $data['customs'], $data['service_tax']);
 			}
             
             $addOn = array('purchase_part_id' => $id);
@@ -327,7 +327,7 @@ class Purchases_model extends CI_Model{
 	}
 	
 	function getPurchasePartByID($id = NULL){
-		$q = $this->db->select('*')->from('purchase_part_items')->where('purchase_part_id',$id)->get();
+		$q = $this->db->select('purchase_part_items.*,parts.code')->from('purchase_part_items')->join('parts','parts.id = purchase_part_items.part_id')->where('purchase_part_id',$id)->get();
 		if($q->num_rows() > 0){
 			foreach($q->result() as $row){
 				$row1[] = $row;

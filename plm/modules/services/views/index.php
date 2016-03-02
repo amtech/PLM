@@ -3,6 +3,9 @@
             var oTable = $('#service_view').dataTable( {
                 "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 dom: 'T<"clear">lfrtip',
+				"aoColumnDefs" : [
+                    {"aTargets": [3],"mRender": format_ddmmyyyy},
+                ],
                 tableTools: {
                     "sSwfPath": "http://cdnjs.cloudflare.com/ajax/libs/datatables-tabletools/2.1.5/swf/copy_csv_xls_pdf.swf",
                     "aButtons": [
@@ -60,6 +63,8 @@
 									<thead>
 										<tr>
 											<th>Record</th>
+											<th>Serial No</th>
+											<th>Model</th>
 											<th>Service Date</th>
 											<th>Warranty</th>
 											<th>Working Hour</th>
@@ -79,6 +84,8 @@
                                         ?>
                                         <tr>
                                             <td><?php echo $row->ro_no; ?></td>
+                                            <td><?php echo $row->serial_no; ?></td>
+                                            <td><?php echo $row->model_name; ?></td>
                                             <td><?php echo $row->service_date; ?></td>
                                             <td><?php echo $row->warranty; ?></td>
                                             <td><?php echo $row->working_hour; ?></td>

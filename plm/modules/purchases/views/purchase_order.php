@@ -12,9 +12,13 @@
 		table {
 			border-collapse: collapse;
 		}
+		.regards{
+			padding-top:10px;
+		}
 	</style>
 </head>
 <body>
+	<div style="height:100px;width:100%;"></div>
 	<table border="1" cellspacing="0" cellpadding="0" width="100%" id="po">
 		<tr>
 			<td align="center" colspan="4">
@@ -66,7 +70,7 @@
 			<th>QTY</th>
 			<th>Unit Price (EUR)</th>
 			<th>Total Price (EUR)</th>
-			<th>Delivery Time</th>
+			<!--<th>Delivery Time</th>-->
 		</tr>
 		<?php 
 			if(!empty($parts)){
@@ -75,28 +79,28 @@
 		?>
 		<tr>
 			<td><?php echo $i+= 1; ?></td>
-			<td>code</td>
+			<td><?php echo $row->code; ?></td>
 			<td><?php echo $row->description; ?></td>
 			<td></td>
 			<td><?php echo $row->part_quantity; ?></td>
-			<td><?php echo $row->cost; ?></td>
-			<td><?php echo $row->sub_total; ?></td>
-			<td><?php echo date('d-m-Y',strtotime($purchase->expected_date)); ?></td>
+			<td style="text-align:center;"><?php echo $row->cost; ?></td>
+			<td style="text-align:center;"><?php echo $row->sub_total; ?></td>
+			<!--<td><?php echo date('d-m-Y',strtotime($purchase->expected_date)); ?></td>-->
 		</tr>
 		<?php
 				}
 			}
 		?>
 		<tr>
-			<td colspan="6">Total Amount is SR</td>
-			<td><?php echo $purchase->total; ?></td>
-			<td>SR</td>
+			<td colspan="6" style="text-align:right;"><b>Total Amount is EURO&nbsp;&nbsp;&nbsp;</b></td>
+			<td style="text-align:center;"><?php echo $purchase->total; ?></td>
+			<!--<td>SR</td>-->
 		</tr>
 		<tr>
-			<td colspan="9">Amount in word:</td>
+			<td colspan="9"><b>Amount in word:</b></td>
 		</tr>
 		<tr>
-			<td colspan="9"><?php echo ucwords($amount_words); ?> saudi riyal</td>
+			<td colspan="9"><b><?php echo ucwords($amount_words); ?> EURO</b></td>
 		</tr>
 	</table>
 	<br/>
@@ -118,155 +122,13 @@
 			<td> &nbsp;&nbsp;&nbsp;<?php echo $purchase->ship_instruction; ?></td>
 		</tr>
 	</table>
-			<!--<tr>
-				<td style="padding:10px;">
-					Dear Sir,<br/>
-					We would like to confirm our purchase order for the following spare parts item.					
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<table width="100%" border="1">
-						<tr>
-							<th>
-								It
-							</th>
-							<th>
-								Code
-							</th>
-							<th>
-								Description
-							</th>
-							<th>
-								U/M
-							</th>
-							<th>
-								QTY
-							</th>
-							<th>
-								Unit Price (EUR)
-							</th>
-							<th>
-								Total Price (EUR)
-							</th>
-							<th>
-								Delivery Time
-							</th>
-						</tr>
-						<?php 
-							if(!empty($parts)){
-								$i = 0;
-								foreach($parts as $row){
-						?>
-						<tr>
-							<td>
-								<?php echo $i+= 1; ?>
-							</td>
-							<td>
-								code
-							</td>
-							<td>
-								<?php echo $row->description; ?>
-							</td>
-							<td>
-								
-							</td>
-							<td>
-								<?php echo $row->part_quantity; ?>
-							</td>
-							<td>
-								<?php echo $row->cost; ?>
-							</td>
-							<td>
-								<?php echo $row->sub_total; ?>
-							</td>
-							<td>
-								<?php echo date('d-m-Y',strtotime($purchase->expected_date)); ?>
-							</td>
-						</tr>
-						<?php
-								}
-							}
-						?>
-						<tr>
-							<td colspan="6">
-								Total Amount is SR
-							</td>
-							<td>
-								<?php echo $purchase->total; ?>
-							</td>
-							<td>
-								SR
-							</td>
-						</tr>						
-						<tr>
-							<td colspan="9">
-								
-							</td>
-						</tr>
-						
-					</table>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<table width="100%" border="1">
-						<tr>
-							<td>
-								Amount in word:
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<?php echo ucwords($amount_words); ?> saudi riyal
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<strong>Terms & Condition:</strong>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<table width="100%" border="1"> 
-						<tr>
-							<td width="30%">
-								PAYMENT: 
-							</td>
-							<td>
-								
-							</td>
-						</tr>
-						<tr>
-							<td>
-								SHIPPING METHOD: 
-							</td>
-							<td>
-								<?php echo $purchase->ship_via; ?>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								Delivery Terms 
-							</td>
-							<td>
-								 
-							</td>
-						</tr>
-						<tr>
-							<td>
-								Shipping Instruction:	
-							</td>
-							<td>
-								<?php echo $purchase->ship_instruction; ?>
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-		</table>-->
+	<div class="regards">
+		<p>Waiting for your prompt order confirmation by return.</p>
+		<div style="margin-left:50px;">
+			<p>Sincerely,</p>
+		</div>
+		<br/>
+		<p>___________________________</p>
+	</div>
 </body>
 </html>
